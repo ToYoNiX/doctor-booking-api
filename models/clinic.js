@@ -12,5 +12,5 @@ const clinicSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const clinicModel = mongoose.model("Clinic", clinicSchema);
-module.exports = { clinicModel }
+const Clinic = mongoose.model("Clinic", clinicSchema);
+module.exports = { Clinic }
