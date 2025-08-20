@@ -1,0 +1,37 @@
+{
+  "name": "doctor-booking-api",
+  "version": "1.0.0",
+  "description": "An api for doctor booking",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToYoNiX/doctor-booking-api.git"
+  },
+  "keywords": [
+    "nodejs",
+    "doctor-booking",
+    "js",
+    "mongodb",
+    "express"
+  ],
+  "author": "ToYoNiX",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ToYoNiX/doctor-booking-api/issues"
+  },
+  "homepage": "https://github.com/ToYoNiX/doctor-booking-api#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.17.2",
+    "nodemon": "^3.1.10",
+    "validator": "^13.15.15"
+  }
+}
