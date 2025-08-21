@@ -13,7 +13,8 @@ const addAppointment = async (req, res) => {
 const cancelAppointment = async (req, res) => {
   try {
     const appointment = await Appointment.findById(req.params.id);
-    if (!appointment) return res.status(404).json({ error: "Appointment not found" });
+    if (!appointment)
+      return res.status(404).json({ error: "Appointment not found" });
 
     if (appointment.userID.toString() !== req.user.id)
       return res.status(403).json({ error: "Not authorized" });
@@ -27,4 +28,4 @@ const cancelAppointment = async (req, res) => {
   }
 };
 
-module.exports = { addAppointment, cancelAppointment }
+module.exports = { addAppointment, cancelAppointment };

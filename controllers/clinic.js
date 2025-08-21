@@ -12,7 +12,9 @@ const registerClinic = async (req, res) => {
 
 const updateClinic = async (req, res) => {
   try {
-    const clinic = await Clinic.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const clinic = await Clinic.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
     if (!clinic) return res.status(404).json({ error: "Clinic not found" });
     res.json(clinic);
   } catch (err) {
@@ -30,4 +32,4 @@ const deleteClinic = async (req, res) => {
   }
 };
 
-module.exports = { registerClinic, updateClinic, deleteClinic }
+module.exports = { registerClinic, updateClinic, deleteClinic };

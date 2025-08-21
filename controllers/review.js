@@ -12,7 +12,10 @@ const addReview = async (req, res) => {
 
 const editReview = async (req, res) => {
   try {
-    const review = await Review.findOne({ _id: req.params.id, userID: req.user.id });
+    const review = await Review.findOne({
+      _id: req.params.id,
+      userID: req.user.id,
+    });
     if (!review) return res.status(404).json({ error: "Review not found" });
 
     Object.assign(review, req.body);
@@ -26,7 +29,10 @@ const editReview = async (req, res) => {
 
 const deleteReview = async (req, res) => {
   try {
-    const review = await Review.findOneAndDelete({ _id: req.params.id, userID: req.user.id });
+    const review = await Review.findOneAndDelete({
+      _id: req.params.id,
+      userID: req.user.id,
+    });
     if (!review) return res.status(404).json({ error: "Review not found" });
 
     res.json({ message: "Review deleted successfully" });
@@ -35,4 +41,4 @@ const deleteReview = async (req, res) => {
   }
 };
 
-module.exports = { addReview, editReview, deleteReview}
+module.exports = { addReview, editReview, deleteReview };

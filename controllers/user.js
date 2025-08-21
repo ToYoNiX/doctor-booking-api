@@ -3,15 +3,19 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const createToken = (user) => {
-  return jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+  return jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: "7d",
+  });
 };
 
 const registerUser = async (req, res) => {
   try {
-    const { fName, lName, nationalID, email, password, gender, address } = req.body;
+    const { fName, lName, nationalID, email, password, gender, address } =
+      req.body;
 
     const exists = await User.findOne({ email });
-    if (exists) return res.status(400).json({ error: "Email already registered" });
+    if (exists)
+      return res.status(400).json({ error: "Email already registered" });
 
     const saltRounds = parseInt(process.env.SALT_ROUNDS) || 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
@@ -41,10 +45,12 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ error: "Invalid email or password" });
+    if (!user)
+      return res.status(400).json({ error: "Invalid email or password" });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ error: "Invalid email or password" });
+    if (!isMatch)
+      return res.status(400).json({ error: "Invalid email or password" });
 
     const token = createToken(user);
     res.json({ user, token });
@@ -56,10 +62,21 @@ const loginUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    const { fName, lName, nationalID, email, password, gender, address } = req.body;
+    const { fName, lName, nationalID, email, password, gender, address } =
+      req.body;
 
-    if (!fName || !lName || !nationalID || !email || !password || !gender || !address) {
-      return res.status(400).json({ error: "All fields are required for PUT update" });
+    if (
+      !fName ||
+      !lName ||
+      !nationalID ||
+      !email ||
+      !password ||
+      !gender ||
+      !address
+    ) {
+      return res
+        .status(400)
+        .json({ error: "All fields are required for PUT update" });
     }
 
     const saltRounds = parseInt(process.env.SALT_ROUNDS) || 10;
