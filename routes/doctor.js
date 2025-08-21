@@ -5,8 +5,8 @@ const { authMiddleware } = require("../auth/auth.js");
 const router = express.Router();
 
 // Protected (only logged-in users can upgrade to doctor)
-router.post("/register", authMiddleware, registerDoctor);
-router.put("/update", authMiddleware, updateDoctor);
-router.delete("/delete", authMiddleware, deleteDoctor);
+router.post("/", authMiddleware, registerDoctor);
+router.put("/", authMiddleware, updateDoctor);
+router.delete("/", authMiddleware, deleteDoctor);
 
 module.exports = router

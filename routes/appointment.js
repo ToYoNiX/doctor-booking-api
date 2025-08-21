@@ -5,7 +5,7 @@ const { authMiddleware } = require("../auth/auth.js");
 const router = express.Router();
 
 // Protected
-router.post("/add", authMiddleware, addAppointment);
-router.put("/cancel/:id", authMiddleware, cancelAppointment);
+router.post("/", authMiddleware, addAppointment);
+router.put("/:id", authMiddleware, cancelAppointment);
 
 module.exports = router

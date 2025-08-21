@@ -5,7 +5,7 @@ const { authMiddleware } = require("../auth/auth.js");
 const router = express.Router();
 
 // Protected (admin or doctor — you can expand logic later)
-router.post("/register", authMiddleware, registerClinic);
+router.post("/", authMiddleware, registerClinic);
 router.put("/:id", authMiddleware, updateClinic);
 router.delete("/:id", authMiddleware, deleteClinic);
 

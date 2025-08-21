@@ -5,10 +5,10 @@ const { authMiddleware } = require("../auth/auth.js");
 const router = express.Router();
 
 // Public
-router.post("/register", registerUser);
+router.post("/", registerUser);
 
 // Protected
-router.put("/update", authMiddleware, updateUser);
-router.delete("/delete", authMiddleware, deleteUser);
+router.put("/", authMiddleware, updateUser);
+router.delete("/", authMiddleware, deleteUser);
 
 module.exports = router
