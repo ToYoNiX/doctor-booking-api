@@ -1,11 +1,12 @@
 const express = require("express");
-const { registerUser, updateUser, deleteUser } = require("../controllers/user.js");
+const { loginUser, registerUser, updateUser, deleteUser } = require("../controllers/user.js");
 const { authMiddleware } = require("../auth/auth.js");
 
 const router = express.Router();
 
 // Public
 router.post("/", registerUser);
+router.post("/login", loginUser);
 
 // Protected
 router.put("/", authMiddleware, updateUser);
